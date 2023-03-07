@@ -10,7 +10,7 @@
 \usepackage[titletoc]{appendix}
 \usepackage[export]{adjustbox}
 \usepackage[nottoc,notlot,notlof]{tocbibind}
-\usepackage[labelfont=bf, textfont=bf]{caption}
+\usepackage[font=small,labelfont={bf,it}, textfont=it]{caption}
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage[bottom]{footmisc}
@@ -26,6 +26,14 @@
 \usepackage[utf8]{inputenc}
 \usepackage{mathptmx} %Times Font
 \usepackage{csquotes}
+\usepackage{titlesec}
+\usepackage{colortbl}
+\usepackage[colorinlistoftodos]{todonotes}
+\setlength{\marginparwidth}{3cm} % set the width of the todo
+\reversemarginpar % sets the todo in the left margin
+\usepackage{enumitem}
+
+
 
 %==== Header and Footer configure ====
 % Define the plain pagestyle used by most chapters
@@ -38,68 +46,80 @@
 }
 
 %==== Overall Config ====
-\setlength{\parindent}{0in} % Set paragraph indent as 0
+%\setlength{\parindent}{0in} % Set paragraph indent as 0
 % \setlength{\fboxsep}{-0.3in}%
+
+\titleformat{\chapter}{\centering\bfseries\large}{\chaptername~\thechapter:}{0.5em}{}
+\titlespacing*{\chapter}{0pt}{0pt}{40pt}
+\titleformat*{\section}{\bfseries\fontsize{12pt}{12}}
+\titleformat*{\subsection}{\bfseries\itshape\fontsize{12pt}{12}}
+
 \setlength{\fboxrule}{0.5pt} % Set the bounding box around the image as 0.5pt
 \pagestyle{plain}
+
 % \renewcommand{\chaptermark}[1]{\markboth{#1}{}}% Comment this line to use header "Chapter 1. Literature View"; otherwise header is "Literature View"
+
+\addtocontents{toc}{\protect\vspace{0.05in}}
+\addtocontents{lof}{\protect\vspace{0.05in}}
+\addtocontents{lot}{\protect\vspace{0.05in}}
 
 
 
 \begin{document}
 \fontdimen2\font=0.5em% inter word space
 %==== FRONT PART====
-\include{Title/coverpage} % Coverpage
+\include{Front/01_coverpage} % Coverpage
 
 %\begingroup
 %\let\cleardoublepage\clearpage
 \pagenumbering{roman}
 
-\include{Title/authorship}
-\include{Title/copyright}
-\include{Front/Abstract}
-\include{Front/Acknowledgement}
+\include{Front/02_authorship}
+\include{Front/03_copyright.tex}
+\include{Front/04_Acknowledgement}
+\include{Front/05_Abstract}
+
 
 \renewcommand*\contentsname{\centering Table of Contents}
 \tableofcontents
+
 \newpage
-
-
-
-\include{Front/Acronyms}
-\include{Front/Symbols}
 
 
 \renewcommand{\listfigurename}{\centering List of Figures}
 \listoffigures
-\addcontentsline{toc}{chapter}{Lists of Figures}
+\addcontentsline{toc}{chapter}{List of Figures}
 \newpage
 
 \renewcommand{\listtablename}{\centering List of Tables}
 \listoftables 
-\addcontentsline{toc}{chapter}{Lists of Tables}
+\addcontentsline{toc}{chapter}{List of Tables}
 \newpage
+
+\include{Front/06_Abbreviations}
+
 
 %\endgroup
 
 %==== MAIN PART ====
 
 \pagenumbering{arabic}
-\include{Chapter1/Chapter1}
-\include{Chapter2/Chapter2}
-\include{Chapter3/Chapter3}
-\include{Chapter4/Chapter4}
-\include{Chapter5/Chapter5}
+\include{Sections/01_Introduction}
+\include{Sections/02_LiteratureReview}
+\include{Sections/03_Methodology}
+\include{Sections/04_AnalysisResultsDiscussion}
+\include{Sections/05_ConclusionsRecommendations}
 
 %==== ENDING PART ===
 
-\renewcommand\bibname{References}
+\renewcommand\bibname{List of References}
 \bibliographystyle{unsrt}
-\begin{spacing}{1.5}
+\begin{spacing}{2.0}
+\titlespacing*{\chapter}{0pt}{-18pt}{41pt}
 \bibliography{Ref/References}
 \end{spacing}
 \newpage
 
-\include{Appendix/appendix}
+\include{Sections/06_Appendix}
 %==== END OF ALL ===
 \end{document}
