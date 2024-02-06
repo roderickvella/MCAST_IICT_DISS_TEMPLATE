@@ -15,4 +15,5 @@ The student acknowledges that it is solely his or her responsibility to verify t
 
 ## Usage
 
-Get the latest updates from the releases section. Upload zip on www.overleaf.com.
+Tested on Overleaf & TeX Live + LaTeX Workshop VSCode
+
