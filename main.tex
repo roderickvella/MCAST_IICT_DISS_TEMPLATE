@@ -6,7 +6,7 @@
 \usepackage{amsmath}
 \usepackage{cite}
 \usepackage{courier}
-\usepackage{minted} % For highlighted source code
+\usepackage{listings}
 \usepackage[titletoc]{appendix}
 \usepackage[export]{adjustbox}
 \usepackage[nottoc,notlot,notlof]{tocbibind}
@@ -63,7 +63,15 @@
 \addtocontents{lof}{\protect\vspace{0.05in}}
 \addtocontents{lot}{\protect\vspace{0.05in}}
 
-
+% Listings package settings
+\lstset{
+    language=Python,
+    basicstyle=\scriptsize\ttfamily,
+    tabsize=4,
+    breaklines=true,
+    breakatwhitespace=true,
+    showstringspaces=false
+}
 
 \begin{document}
 \fontdimen2\font=0.5em% inter word space
